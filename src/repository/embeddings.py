@@ -6,5 +6,11 @@ class EmbeddingsRepository:
         self.api = api
 
     def get_embeddings(self, query: str) -> List[float]:
-        print('will call openai api', query)
-        return []
+        res = self.api.embeddings.create(
+            model="text-embedding-3-small",
+            input=query,
+            encoding_format="float"
+        )
+        embedding = res.data[0].embedding
+        print(f'embedded query "{query}" into a {len(list(embedding))} vector')
+        return embedding

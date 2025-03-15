@@ -6,5 +6,5 @@ class ListingsRepository:
         self.db = db['sample_airbnb']['listingsAndReviews']
 
     def get_matching_listings(self, embedded_query: str) -> List[Any]:
-        print('will call vector db', embedded_query)
+        # print('will call vector db', embedded_query)
         return []
