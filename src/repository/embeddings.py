@@ -4,10 +4,11 @@ from openai import OpenAI
 class EmbeddingsRepository:
     def __init__(self, api: OpenAI):
         self.api = api
+        self.embedding_model_id = "text-embedding-3-small"
 
     def get_embeddings(self, query: str) -> List[float]:
         res = self.api.embeddings.create(
-            model="text-embedding-3-small",
+            model=self.embedding_model_id,
             input=query,
             encoding_format="float"
         )
