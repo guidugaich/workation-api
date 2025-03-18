@@ -46,7 +46,7 @@ def process_documents(documents):
                 {"$set": 
                     {
                         f"embedding_{embedding_model_id}": embedding,
-                        "big_field": text
+                        "big_field": text,
                     }
                 }
             )
@@ -60,7 +60,7 @@ def main():
     print("Starting...")
     documents = list(collection.find(
         { "amenities": { "$all": ["Wifi", "Laptop friendly workspace"] } }
-    ).limit(20))
+    ).limit(50))
     
     process_documents(documents)
 
