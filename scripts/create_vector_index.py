@@ -1,6 +1,5 @@
 from pymongo.mongo_client import MongoClient
 from pymongo.operations import SearchIndexModel
-from embed_database_one_off import embedding_model_id
 import time
 from dotenv import load_dotenv
 import os
@@ -14,6 +13,8 @@ client = MongoClient(uri)
 # Access your database and collection
 db = client["sample_airbnb"]
 collection = db["listingsAndReviews"]
+
+embedding_model_id="text-embedding-3-small"
 
 # Create your index model, then create the search index
 search_index_model = SearchIndexModel(

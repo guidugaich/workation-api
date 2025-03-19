@@ -59,8 +59,11 @@ def process_documents(documents):
 def main():
     print("Starting...")
     documents = list(collection.find(
-        { "amenities": { "$all": ["Wifi", "Laptop friendly workspace"] } }
-    ).limit(50))
+        {
+            "amenities": { "$all": ["Wifi", "Laptop friendly workspace"] },
+            "big_field": { "$exists": False }  
+        }
+    ).limit(1000))
     
     process_documents(documents)
 
