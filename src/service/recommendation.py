@@ -9,7 +9,7 @@ class RecommendationService:
 
 
     def recommend(self, query: str) -> List[Any]:
-        embedded_query = self.embeddings_repository.get_embeddings(query)
+        embedded_query = self.embeddings_repository.get_embeddings_cache(query)
         recommendations = self.listings_repository.get_matching_listings(embedded_query)
-
+        
         return recommendations
