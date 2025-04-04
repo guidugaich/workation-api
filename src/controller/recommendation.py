@@ -1,18 +1,11 @@
-from fastapi import APIRouter, Depends
+from typing import List, Any
 from src.service.recommendation import RecommendationService
-from src.config.schemas.listings import RecommendationRequest, RecommendationResponse
-from src.container import get_recommendation_service
 
-recommendation_router = APIRouter()
+class RecommendationController:
+    def __init__(self, recommendation_service: RecommendationService):
+        self.recommendation_service = recommendation_service
 
-@recommendation_router.post("/recommend", response_model=None)
-async def recommend(
-    request: RecommendationRequest,
-    service: RecommendationService = Depends(get_recommendation_service),
-):
-    print('request.query', request.query)
-    recommendations = service.recommend(request.query)
-    return {
-        "recommendations": recommendations,
-        "note": f"Found {len(recommendations)} top matches for '{request.query}'."
-    }
+    def recommend(self, query: str) -> List[Any]:
+        response = self.recommendation_service.recommend(query)
+        
+        return response

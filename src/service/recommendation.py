@@ -7,7 +7,6 @@ class RecommendationService:
         self.listings_repository = listings_repository
         self.embeddings_repository = embeddings_repository
 
-
     def recommend(self, query: str) -> List[Any]:
         embedded_query = self.embeddings_repository.get_embeddings_cache(query)
         recommendations = self.listings_repository.get_matching_listings(embedded_query)

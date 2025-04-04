@@ -1,7 +1,7 @@
 from fastapi import FastAPI
 import uvicorn
 
-from src.controller.recommendation import recommendation_router
+from src.router.recommendation import recommendation_router
 
 app = FastAPI()
 
