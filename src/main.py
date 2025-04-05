@@ -3,10 +3,10 @@ import uvicorn
 
 from src.router.recommendation import recommendation_router
 
-app = FastAPI()
+app: FastAPI = FastAPI()
 
 @app.get("/")
-def healthcheck():
+def healthcheck() -> dict[str, str]:
     return {"status": "healthy"}
 
 app.include_router(recommendation_router)
