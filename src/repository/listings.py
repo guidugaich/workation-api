@@ -16,7 +16,7 @@ class ListingsRepository:
                     "queryVector": embedded_query,
                     "path": f"embedding_{self.model_id}",
                     "numCandidates": 1000,
-                    "limit": 4,
+                    "limit": 5,
                     "index": f"embedding_{self.model_id}_index"
                 }
             },{
